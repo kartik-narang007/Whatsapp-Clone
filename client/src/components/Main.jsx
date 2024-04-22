@@ -3,12 +3,13 @@ import ChatList from "./Chatlist/ChatList";
 import Empty from "./Empty";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
-import { CHECK_USER_ROUTE } from "@/utils/ApiRoutes";
+import { CHECK_USER_ROUTE, GET_MESSAGES_ROUTE } from "@/utils/ApiRoutes";
 import { useRouter } from "next/navigation";
 import { useStateProvider } from "@/context/StateContext";
 import { reducerCases } from "@/context/constants";
 import axios from "axios";
 import Chat from "./Chat/Chat";
+import reducer from "@/context/StateReducers";
 
 function Main() {
   const router = useRouter();
@@ -48,12 +49,23 @@ function Main() {
     }
   });
 
+  useEffect(() => {
+    const getMessages = async () => {
+      const { data:{messages} } = await axios.get(
+        `${GET_MESSAGES_ROUTE}/${userInfo?.id}/${currentChatUser?.id}`
+      );
+        dispatch({type:reducerCases.SET_MESSAGES,messages})
+
+    };
+    if (currentChatUser?.id) {
+      getMessages();
+    }
+  }, [currentChatUser]);
+
   return (
     <div className="grid grid-cols-main h-screen w-screen max-h-screen max-w-full overflow-hidden">
       <ChatList />
-      {
-        currentChatUser ? <Chat/> : <Empty/>
-      }
+      {currentChatUser ? <Chat /> : <Empty />}
     </div>
   );
 }

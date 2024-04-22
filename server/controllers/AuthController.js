@@ -1,4 +1,4 @@
-import getPrimsaInstance from "../utils/PrismaClient.js";
+import getPrismaInstance from "../utils/PrismaClient.js";
 
 export const checkUser = async (req, res, next) => {
   try {
@@ -6,7 +6,7 @@ export const checkUser = async (req, res, next) => {
     if (!email) {
       return res.json({ msg: "Email is Required", status: false });
     }
-    const prisma = getPrimsaInstance();
+    const prisma = getPrismaInstance();
     const user = await prisma.user.findUnique({
       where: {
         email,
@@ -29,7 +29,7 @@ export const onBoardUser = async (req, res, next) => {
       return res.send("Email, Name and Image are required");
     }
 
-    const prisma = getPrimsaInstance();
+    const prisma = getPrismaInstance();
     const user = await prisma.user.create({
       data: {
         email,
@@ -46,7 +46,7 @@ export const onBoardUser = async (req, res, next) => {
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const prisma = getPrimsaInstance();
+    const prisma = getPrismaInstance();
     const users = await prisma.user.findMany({
       orderBy: { name: "asc" },
       select: {

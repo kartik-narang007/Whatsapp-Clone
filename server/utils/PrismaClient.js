@@ -3,11 +3,11 @@ import { PrismaClient } from "@prisma/client";
 let prismaInstance = null;
 
 
-function getPrimsaInstance(){
+function getPrismaInstance(){
     if(!prismaInstance){
         prismaInstance = new PrismaClient();
     }
     return prismaInstance;
 }
 
-export default getPrimsaInstance;
+export default getPrismaInstance;
