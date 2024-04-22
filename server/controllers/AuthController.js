@@ -30,7 +30,7 @@ export const onBoardUser = async (req, res, next) => {
     }
 
     const prisma = getPrimsaInstance();
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         email,
         name,
@@ -38,7 +38,7 @@ export const onBoardUser = async (req, res, next) => {
         profilePicture,
       },
     });
-    res.json({ msg: "Success", status: true });
+    res.json({ msg: "Success", status: true, user });
   } catch (err) {
     next(err);
   }
