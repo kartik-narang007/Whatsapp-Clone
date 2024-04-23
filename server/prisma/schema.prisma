@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -26,4 +27,5 @@ model Messages {
   receiverId   Int
   messageStatus String? @default("sent")
   createdAt    DateTime @default(now())
+  type         String
 }

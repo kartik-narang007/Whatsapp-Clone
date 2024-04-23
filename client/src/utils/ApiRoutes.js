@@ -13,3 +13,5 @@ export const GET_ALL_CONTACTS = `${AUTH_ROUTE}/get-contacts`;
 export const ADD_MESSAGE_ROUTE = `${MESSAGES_ROUTE}/addMessage`;
 
 export const GET_MESSAGES_ROUTE = `${MESSAGES_ROUTE}/get-messages`;
+
+export const ADD_IMAGE_MESSAGE = `${MESSAGES_ROUTE}/add-image-message`

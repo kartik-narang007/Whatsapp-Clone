@@ -10,14 +10,13 @@ function Avatar({ type, image, setImage }) {
   const [hover, setHover] = useState(false);
   const [isContextMenuVisible, setIsContextMenuVisible] = useState(false);
   const [showCapturePhoto, setShowCapturePhoto] = useState(false);
+  const [grabPhoto, setGrabPhoto] = useState(false);
+  const [showPhotoLibrary, setShowPhotoLibrary] = useState(false);
 
   const [contextMenuCoordinates, setContextMenuCoordinates] = useState({
     x: 0,
     y: 0,
   });
-
-  const [grabPhoto, setGrabPhoto] = useState(false);
-  const [showPhotoLibrary, setShowPhotoLibrary] = useState(false);
 
   const PhotoPickerChange = async (photo) => {
     const file = photo.target.files[0];
