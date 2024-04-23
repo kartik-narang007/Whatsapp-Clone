@@ -45,7 +45,7 @@ const reducer = (state, action) => {
     case reducerCases.ADD_MESSAGE:
       return {
         ...state,
-        messsages: [...state.messages, action.newMessage],
+        messages: [...state.messages, action.newMessage],
       };
     default:
       return state;

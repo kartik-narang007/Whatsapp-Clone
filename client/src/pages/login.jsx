@@ -49,6 +49,7 @@ function login() {
           router.push("/");
         }
       }
+      console.log(user);
     } catch (err) {
       console.log(err);
     }
