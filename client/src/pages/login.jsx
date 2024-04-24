@@ -3,7 +3,6 @@ import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
 import {
   GoogleAuthProvider,
-  signInWithPhoneNumber,
   signInWithPopup,
 } from "firebase/auth";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
@@ -49,7 +48,6 @@ function login() {
           router.push("/");
         }
       }
-      console.log(user);
     } catch (err) {
       console.log(err);
     }
